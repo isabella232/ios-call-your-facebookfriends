@@ -286,7 +286,7 @@ Head over to the header file for our call screen, **DetailViewController.h**, an
 #import <FBSDKShareKit/FBSDKShareKit.h>
 ```
 
-Then, allow for delegate assignments by adding to the interface line to make it looks like this:
+Then, allow for delegate assignments by adding to the interface line to make it look like this:
 
 ```objective-c
 @interface DetailViewController : UIViewController <SINCallClientDelegate, SINCallDelegate>
