@@ -83,7 +83,7 @@ and the following code to **CFriend.m** in the implementation:
 
 Import **CFriend.h** at the top of the files **MasterViewController.h** and **DetailedViewController.h**.
 
-In order to get all of the user's friends with the app, we need to populate the UITableView in the master view controller when it is loaded. We can do this by calling a method in `viewDidLoad`. Add the following method to *MasterViewController.h**:
+In order to get all of the user's friends with the app, we need to populate the UITableView in the master view controller when it is loaded. We can do this by calling a method in `viewDidLoad`. Add the following method to **MasterViewController.h**:
 
 
 ```objective-c
@@ -151,7 +151,7 @@ You should now be able to login and see a list of friends who have the app. You 
 
 # 3. Call Screen
 
-Before we continue, there is a flaw in the current design of our app: we can only access our call screen, **DetailViewController**, from **MasterViewController**. While this is fine for making calls, we want to be able to recieve calls and pull up the call screen from anywhere in the app. 
+Before we continue, there is a flaw in the current design of our app: we can only access our call screen, **DetailViewController**, from **MasterViewController**. While this is fine for making calls, we want to be able to recieve calls and display the call screen from anywhere in the app. 
 
 To fix this, first go to **Main.storyboard** and remove the segue between **MasterViewController** and **DetailViewController**. While in the storyboard, give **DetailViewController** the Storyboard ID `callScreen`. Then, go to **MasterViewController** and add the following code:
 
@@ -169,7 +169,7 @@ To fix this, first go to **Main.storyboard** and remove the segue between **Mast
 ```
 Now, the call screen is presented independently, and we can dismiss it whenever we want.
 
-Go to **Main.storyboard** and add two buttons to **DetailViewController**, giving them the titles "Answer" and "Hangup". Then, add the buttons as "AnswerButton" and "HangupButton" to **DetailedViewController.h**, along with appropriate IBActions named "AnswerAction" and "HangupAction". Finally, change the detailItem to be a pointer to a **CFriend** object. **DetailedViewController.h** should now look like this:
+Go to **Main.storyboard** and add two buttons to **DetailViewController**, giving them the titles "Answer" and "Hangup". Then, add the buttons as "AnswerButton" and "HangupButton" to **DetailedViewController.h**, along with appropriate IBActions named "AnswerAction" and "HangupAction". Finally, change the `detailItem` to be a pointer to a **CFriend** object. **DetailedViewController.h** should now look like this:
 
 ```objective-c
 #import <UIKit/UIKit.h>
@@ -286,7 +286,7 @@ Head over to the header file for our call screen, **DetailViewController.h**, an
 #import <FBSDKShareKit/FBSDKShareKit.h>
 ```
 
-Then, allow for delegate assignment by addomg to the interface line so it looks like this:
+Then, allow for delegate assignments by adding to the interface line to make it looks like this:
 
 ```objective-c
 @interface DetailViewController : UIViewController <SINCallClientDelegate, SINCallDelegate>
@@ -363,7 +363,7 @@ Go to `viewDidLoad` and remove the following line:
 [self configureView];
 ```
 
-When the call screen is shown, we want to differenciate between incoming and outgoing calls. Add the following code to `viewDidLoad`:
+When the call screen is shown, we want to differentiate between incoming and outgoing calls. Add the following code to `viewDidLoad`:
 
 ```objective-c
 if ([self.call direction] == SINCallDirectionIncoming) {
@@ -402,19 +402,10 @@ Finally, there are delegate methods for whenever a call establishes or ends. Imp
 }
 ```
 
-Note that whenever the user's call ends, we dismiss the call screen, taking the user back to wherever he or she was in the app before the call began. 
+Now, whenever the user's call ends, we dismiss the call screen, taking the user back to wherever he or she was in the app before the call began. 
 
 ![outgoing-call](img/Outgoing-Call.png)  ![incoming-call](img/Incoming-Call.png)
 
 
 
 Congratulations, you have create an app to call your Facebook friends using SinchService! There are even more features that you can add to this project. Managed Push, for example, can help you reach a user when their app is not open using push notificaitons. To learn more on how to use Managed Push with SinchService, check out this [tutorial](https://github.com/sinch/ios-managedpush-with-sinchservice).
-
-
-
-
-
-
-
-
-
