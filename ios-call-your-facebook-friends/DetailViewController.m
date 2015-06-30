@@ -43,8 +43,7 @@
     
     if ([self.call direction] == SINCallDirectionIncoming) {
         self.AnswerButton.hidden = NO;
-        //self.detailDescriptionLabel.text = [NSString stringWithFormat:@"call from %@", [self.detailItem friendName]];
-        self.detailDescriptionLabel.text = [NSString stringWithFormat:@"call from Kate Smith"];
+        self.detailDescriptionLabel.text = [NSString stringWithFormat:@"call from %@", [self.detailItem friendName]];
     } else {
         self.AnswerButton.hidden = YES;
         self.detailDescriptionLabel.text = [NSString stringWithFormat:@"calling %@...", [self.detailItem friendName]];
